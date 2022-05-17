@@ -1,0 +1,9 @@
+{
+	"name": "P001-TestInstance",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "4fd7e7b3-5f29-4652-afb8-77ce045cb43c",
+		"tenantId": "988e044b-51ea-4a1b-9bad-53e86bbb4bf8"
+	}
+}
