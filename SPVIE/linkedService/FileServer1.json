@@ -1,0 +1,13 @@
+{
+	"name": "FileServer1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\Users\\RenaldoGALOFARO\\Documents\\SEABIRD\\SPVIE - Reportings Techniques - Documents\\General\\20 - Documents Clients\\Envoi 12-01-2022\\Collectif",
+			"userId": "srv001-spvieAdmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQENFQjdCMTExLTgxM0MtNDQwOS04RTlGLTcwRkM2MjJDN0Q5QV83MTc2YmE3Yi0yZDQ1LTQ2YTAtODNmNi00NWJhM2MyNjMxODgiDQp9"
+		}
+	}
+}
