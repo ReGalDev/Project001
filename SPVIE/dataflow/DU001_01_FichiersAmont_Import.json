@@ -1,5 +1,5 @@
 {
-	"name": "DU001_FichiersAmont",
+	"name": "DU001_01_FichiersAmont_Import",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
