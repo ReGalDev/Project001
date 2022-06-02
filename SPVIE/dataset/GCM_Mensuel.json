@@ -1,0 +1,18 @@
+{
+	"name": "GCM_Mensuel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedService1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	}
+}
