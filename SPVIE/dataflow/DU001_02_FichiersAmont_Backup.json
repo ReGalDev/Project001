@@ -1,0 +1,143 @@
+{
+	"name": "DU001_02_FichiersAmont_Backup",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AG2R_Mensuel",
+						"type": "DatasetReference"
+					},
+					"name": "AG2R"
+				},
+				{
+					"dataset": {
+						"referenceName": "APGIS_Mensuel",
+						"type": "DatasetReference"
+					},
+					"name": "APGIS"
+				},
+				{
+					"dataset": {
+						"referenceName": "AXA_Mensuel",
+						"type": "DatasetReference"
+					},
+					"name": "AXA"
+				},
+				{
+					"dataset": {
+						"referenceName": "CHUBB_Mensuel",
+						"type": "DatasetReference"
+					},
+					"name": "CHUBB"
+				},
+				{
+					"dataset": {
+						"referenceName": "CNP_Mensuel",
+						"type": "DatasetReference"
+					},
+					"name": "CNP"
+				},
+				{
+					"dataset": {
+						"referenceName": "FranceMutualite_Mensuel",
+						"type": "DatasetReference"
+					},
+					"name": "FRANCEMUTUALITE"
+				},
+				{
+					"dataset": {
+						"referenceName": "GCM_Mensuel",
+						"type": "DatasetReference"
+					},
+					"name": "GCM"
+				},
+				{
+					"dataset": {
+						"referenceName": "GENERALI_Mensuel",
+						"type": "DatasetReference"
+					},
+					"name": "GENERALI"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "lookup1"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "exists1"
+				},
+				{
+					"name": "parse1"
+				},
+				{
+					"name": "assert1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "flowlet1"
+				},
+				{
+					"name": "flowlet2"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> AG2R",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> APGIS",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> AXA",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> CHUBB",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> CNP",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> FRANCEMUTUALITE",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> GCM",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> GENERALI",
+				"AG2R lookup(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookup1",
+				"lookup1 split(ERROR_FUNCTION(''),",
+				"     disjoint: false) ~> split1@(, )",
+				"split1 derive() ~> derivedColumn1",
+				"APGIS exists(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     negate:false,",
+				"     broadcast: 'auto')~> exists1",
+				"exists1 parse(format: 'json',",
+				"     documentForm: 'documentPerLine') ~> parse1",
+				"parse1 assert(expectTrue(ERROR_FUNCTION(''), false, 'assert1')) ~> assert1",
+				"split1 aggregate() ~> aggregate1",
+				"aggregate1 select(skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"flowlet2 compose(composition: 'undefined') ~> flowlet1@()",
+				"select1 compose(composition: 'undefined') ~> flowlet2@()"
+			]
+		}
+	}
+}
